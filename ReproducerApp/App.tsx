@@ -4,21 +4,15 @@ import {Button, StyleSheet, View} from 'react-native';
 const N = 20;
 
 export default function Reproducer() {
-  const [rotation, setRotation] = useState(0);
+  const [opacity, setOpacity] = useState(1);
 
   return (
     <View style={styles.container}>
-      <Button
-        title="Set rotation"
-        onPress={() => setRotation(Math.random() * 90)}
-      />
+      <Button title="Set opacity" onPress={() => setOpacity(Math.random())} />
       {[...new Array(N)].map((_, i) => (
         <View key={i} style={styles.row}>
           {[...new Array(N)].map((__, j) => (
-            <View
-              key={j}
-              style={[styles.box, {transform: [{rotate: `${rotation}deg`}]}]}
-            />
+            <View key={j} style={[styles.box, {opacity}]} />
           ))}
         </View>
       ))}
